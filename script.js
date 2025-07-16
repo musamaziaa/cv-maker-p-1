@@ -1,6 +1,12 @@
 let currentStep = 1;
 const totalSteps = 5; // Updated to 5 steps
 
+// Add at the top of the file (after any imports or variable declarations)
+const BASE_URL =
+    location.hostname === 'localhost'
+        ? 'http://localhost:3000'
+        : 'https://your-backend-host.com'; // TODO: Replace with your actual backend URL
+
 // Form data storage - EXPANDED
 let formData = {
     // Basic Info
@@ -374,7 +380,7 @@ async function generateAIWorkExperience() {
         const prompt = `Generate 6 strong, professional, resume-style bullet points for the following job role. Do NOT include headings, name, summary, or any intro—only bullet points. Each bullet should start with a powerful action verb, be under 25 words, and describe impact or value. Do not number the bullets. Use actions words like "Led, Built, Made, etc" \n\nRole: ${role}\nName: ${formData.name || '--'}\nSummary: ${formData.summary || '--'}\nKey Skills: ${formData.soft_skills || ''}, ${formData.spoken_languages || ''}`;
 
         // Call backend proxy
-        const response = await fetch('/api/generateWorkExperience', {
+        const response = await fetch(`${BASE_URL}/api/generateWorkExperience`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ prompt })
@@ -497,7 +503,7 @@ async function generateAndShowCV() {
         const dataToSend = getFilteredFormData();
         delete dataToSend.photo;
         // Send selectedTemplate to backend
-        const response = await fetch('/api/chat', {
+        const response = await fetch(`${BASE_URL}/api/chat`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
