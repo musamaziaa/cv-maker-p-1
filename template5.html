@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV Template 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Source Sans Pro', sans-serif;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        .cv-container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background-color: #2f4f4f;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-transform: uppercase;
+        }
+
+        .header h2 {
+            margin: 5px 0 0;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .left,
+        .right {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section {
+            background-color: #90ee90;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: #2f4f4f;
+            border-bottom: 1px solid #2f4f4f;
+            padding-bottom: 4px;
+        }
+
+        .section img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 15px;
+            border: 4px solid #2f4f4f;
+        }
+
+        .section ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .section ul li {
+            margin-bottom: 6px;
+            font-size: 0.95em;
+        }
+
+        .section p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin: 0 0 10px;
+        }
+
+        .contact i {
+            margin-right: 8px;
+        }
+
+        .contact p {
+            margin-bottom: 8px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cv-container">
+        <div class="header">
+            <h1>Sarah Mitchell</h1>
+            <h2>Marketing Specialist</h2>
+        </div>
+
+        <div class="main-content">
+            <div class="left">
+                <div class="section">
+                    <img src="https://placehold.co/120x120" alt="Profile Picture" />
+                    <h3>Contact</h3>
+                    <div class="contact">
+                        <p><i class="fas fa-envelope"></i> sarah.mitchell@mail.com</p>
+                        <p><i class="fas fa-phone"></i> (555) 678-9101</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Austin, TX</p>
+                        <p><i class="fas fa-globe"></i> www.sarahmitchell.com</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Skills</h3>
+                    <ul>
+                        <li>SEO & SEM</li>
+                        <li>Content Strategy</li>
+                        <li>Google Analytics</li>
+                        <li>Social Media Campaigns</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>English (Fluent)</li>
+                        <li>French (Intermediate)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="section">
+                    <h3>Objective</h3>
+                    <p>Creative and results-oriented marketing specialist with 6+ years of experience driving successful
+                        digital campaigns. Looking to bring data-driven strategy and brand storytelling to a growing
+                        startup.</p>
+                </div>
+
+                <div class="section">
+                    <h3>Education</h3>
+                    <p><strong>University of Texas</strong><br />B.A. in Marketing – 2012–2016</p>
+                </div>
+
+                <div class="section">
+                    <h3>Experience</h3>
+                    <p><strong>Digital Marketing Lead – Bloom Agency</strong><br />2019–Present</p>
+                    <ul>
+                        <li>Increased lead generation by 45% through optimized email funnels</li>
+                        <li>Managed $100K/month ad spend across Google and Facebook</li>
+                    </ul>
+                    <p><strong>Marketing Coordinator – WebHive</strong><br />2016–2019</p>
+                    <ul>
+                        <li>Built SEO strategy that boosted organic traffic by 60%</li>
+                        <li>Created and managed monthly content calendars</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3>References</h3>
+                    <p><strong>Anna Jenkins</strong> – Director of Marketing, Bloom Agency<br />anna.j@bloomagency.com |
+                        (555) 789-1234</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
