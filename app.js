@@ -15,8 +15,7 @@ const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 app.use(cors({
     origin: [
         'http://localhost:5500', // for local dev
-        'https://musamaziaa.github.io/cv-maker-p-1' // GitHub Pages frontend URL (no trailing slash)
-        // 'https://your-backend-host.com'   // TODO: Add your backend URL if needed
+        'https://musamaziaa.github.io/cv-maker-p-1' // production frontend (GitHub Pages)
     ]
 }));
 app.use(express.json({ limit: '2mb' }));

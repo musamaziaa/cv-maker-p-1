@@ -5,7 +5,7 @@ const totalSteps = 5; // Updated to 5 steps
 const BASE_URL =
     location.hostname === 'localhost'
         ? 'http://localhost:3000'
-        : 'https://your-backend-host.com'; // TODO: Replace with your actual backend URL
+        : 'https://cv-maker-p-1-production.up.railway.app';
 
 // Form data storage - EXPANDED
 let formData = {
