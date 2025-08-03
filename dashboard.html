@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI-Powered CV Maker</title>
+    <meta name="description"
+        content="Manage your resumes and CVs. View, edit, and create new professional resumes with AI assistance.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        .dashboard-container {
+            max-width: 700px;
+            margin: 3rem auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem 2rem 2rem 2rem;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .dashboard-header h1 {
+            color: #1A91F0;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-header .user-email {
+            color: #656e83;
+            font-size: 1.1rem;
+        }
+
+        .create-cv-btn {
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            margin: 2rem auto 2.5rem auto;
+            padding: 1.2rem 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: #1A91F0;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(26, 145, 240, 0.08);
+            cursor: pointer;
+            transition: background 0.2s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .create-cv-btn:hover {
+            background: #1170CD;
+        }
+
+        .cv-list-section {
+            margin-top: 2rem;
+        }
+
+        .cv-list-section h2 {
+            color: #1A91F0;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cv-list {
+            min-height: 60px;
+            background: #EFF2F9;
+            border-radius: 6px;
+            padding: 1rem;
+            color: #656e83;
+        }
+
+        @media (max-width: 600px) {
+            .dashboard-container {
+                padding: 1rem 0.3rem;
+                border-radius: 0;
+            }
+
+            .dashboard-header h1 {
+                font-size: 1.3rem;
+            }
+
+            .create-cv-btn {
+                font-size: 1.1rem;
+                padding: 1rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar bg-white">
+        <div class="container">
+            <div class="navbar-content" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="brand-and-toggler">
+                    <a href="index.html" class="navbar-brand">
+                        <img src="assets/images/curriculum-vitae.png" alt="" class="navbar-brand-icon">
+                        <span class="navbar-brand-text">AI-Powered <span>CV Maker</span></span>
+                    </a>
+                </div>
+                <div class="navbar-auth-links">
+                    <a href="log-in.html" class="btn btn-secondary" style="margin-right: 8px;">Log in</a>
+                    <a href="sign-up.html" class="btn btn-primary">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Welcome to your Dashboard</h1>
+            <div class="user-email" id="dashboard-user-email">Loading...</div>
+        </div>
+        <a href="resume.html" class="create-cv-btn">+ Create New CV</a>
+        <div class="cv-list-section">
+            <h2>Your Saved CVs</h2>
+            <div class="cv-list" id="cv-list">
+                <div style="text-align:center; color:#656e83;">You have no CVs, <a href="resume.html"
+                        style="color:#1A91F0; font-weight:600;">create a CV</a>.</div>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, collection, query, where, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDeBC_txgoWzX6QoHdcZJT37RpNZNZNi4g",
+            authDomain: "auth-e8dd6.firebaseapp.com",
+            projectId: "auth-e8dd6",
+            storageBucket: "auth-e8dd6.firebasestorage.app",
+            messagingSenderId: "879507667626",
+            appId: "1:879507667626:web:9bcf4c47caba9cbbc9aed3",
+            measurementId: "G-SD5LRH88ZD"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Only allow access if logged in
+        onAuthStateChanged(auth, function (user) {
+            if (!user) {
+                window.location.href = 'log-in.html';
+            } else {
+                document.getElementById('dashboard-user-email').textContent = user.email;
+                // Fetch and display user's CVs from Firestore
+                const cvListElem = document.getElementById('cv-list');
+                // The 'no drafts' message is already set as default
+
+                const q = query(
+                    collection(db, 'cvs'),
+                    where('uid', '==', user.uid),
+                    orderBy('createdAt', 'desc')
+                );
+
+                getDocs(q)
+                    .then(snapshot => {
+                        if (!snapshot.empty) {
+                            let html = '<ul style="list-style:none; padding:0; margin:0;">';
+                            snapshot.forEach(doc => {
+                                const data = doc.data();
+                                const title = data.title || 'Untitled CV';
+                                const createdAt = data.createdAt && data.createdAt.toDate ? data.createdAt.toDate().toLocaleString() : 'Unknown';
+                                if (data.isDraft) {
+                                    html += `<li style="background:#EFF2F9; margin-bottom:1rem; padding:1rem; border-radius:6px; cursor:pointer;" onclick="window.location.href='resume.html?draftId=${doc.id}'">
+                                        <span style="font-weight:600; color:#1A91F0;">${title}</span>
+                                        <span style="color:#656e83; font-size:0.95rem; margin-left:1rem;">(Draft: ${createdAt})</span>
+                                    </li>`;
+                                } else {
+                                    html += `<li style="background:#EFF2F9; margin-bottom:1rem; padding:1rem; border-radius:6px;">
+                                        <span style="font-weight:600; color:#1A91F0;">${title}</span>
+                                        <span style="color:#656e83; font-size:0.95rem; margin-left:1rem;">(Created: ${createdAt})</span>
+                                    </li>`;
+                                }
+                            });
+                            html += '</ul>';
+                            cvListElem.innerHTML = html;
+                        }
+                    })
+                    .catch(err => {
+                        cvListElem.innerHTML = '<div style="color:#ca0b00;">Error loading CVs: ' + err.message + '</div>';
+                    });
+            }
+        });
+    </script>
+    <script src="assets/js/navbar-auth.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AI-Powered CV Maker - Home</title>
+    <meta name="description" content="Create professional resumes with AI assistance. Build your CV in minutes with our AI-powered resume builder.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+    
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+
+    <nav class="navbar bg-white">
+        <div class="container">
+            <div class="navbar-content" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="brand-and-toggler">
+                    <a href="index.html" class="navbar-brand">
+                        <img src="assets/images/curriculum-vitae.png" alt="" class="navbar-brand-icon">
+                        <span class="navbar-brand-text">AI-Powered <span>CV Maker</span></span>
+                    </a>
+                </div>
+                <div class="navbar-auth-links">
+                    <a href="log-in.html" class="btn btn-secondary" style="margin-right: 8px;">Log in</a>
+                    <a href="sign-up.html" class="btn btn-primary">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="header bg-bright" id="header">
+        <div class="container">
+            <div class="header-content text-center">
+                <h6 class="text-uppercase text-blue-dark fs-14 fw-6 ls-1">AI-Powered CV Maker</h6>
+                <h1 class="lg-title">Only 2% of resumes make it past the first round. Be in the top 2%</h1>
+                <p class="text-dark fs-18">Use professional field-tested resume templates that follow the exact 'resume
+                    rules' employers look for. Easy to use and done within minutes - try now for free!</p>
+                <a href="sign-up.html" class="btn btn-primary text-uppercase">Create my Resume</a>
+                <img src="assets/images/dublin-resume-templates.avif">
+            </div>
+        </div>
+    </header>
+
+
+    <footer class="footer bg-dark">
+        <div class="container">
+            <div class="footer-content text-center">
+                <p class="fs-15">&copy; Copyright 2025. All Rights Reserved - <span>AI-Powered CV Maker</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDeBC_txgoWzX6QoHdcZJT37RpNZNZNi4g",
+            authDomain: "auth-e8dd6.firebaseapp.com",
+            projectId: "auth-e8dd6",
+            storageBucket: "auth-e8dd6.firebasestorage.app",
+            messagingSenderId: "879507667626",
+            appId: "1:879507667626:web:9bcf4c47caba9cbbc9aed3",
+            measurementId: "G-SD5LRH88ZD"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script>
+    <script src="assets/js/navbar-auth.js"></script>
+</body>
+
+</html>

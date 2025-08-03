@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AI-Powered CV Maker</title>
+    <meta name="description"
+        content="Sign in to your account and continue building professional resumes with AI assistance.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        .auth-form-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            background: #EFF2F9;
+        }
+
+        .auth-form {
+            background: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+            min-width: 320px;
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .auth-form h2 {
+            text-align: center;
+            color: #1A91F0;
+            margin-bottom: 1.5rem;
+        }
+
+        .auth-form label {
+            display: block;
+            color: #1A91F0;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.7rem;
+        }
+
+        .auth-form input[type="email"],
+        .auth-form input[type="password"] {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 1.2rem;
+            font-size: 1.55rem;
+        }
+
+        .auth-form .btn {
+            width: 100%;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .auth-form .form-footer {
+            text-align: center;
+        }
+
+        .auth-form .form-footer span {
+            color: #656e83;
+        }
+
+        .auth-form .form-footer a {
+            color: #1A91F0;
+        }
+
+        .auth-error {
+            background: #ffeaea;
+            color: #d93025;
+            border: 1px solid #f5c2c7;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.2rem;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 500;
+            box-shadow: 0 1px 4px rgba(217, 48, 37, 0.07);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            .auth-form-wrapper {
+                padding: 1rem;
+                min-height: 100vh;
+            }
+
+            .auth-form {
+                min-width: 0;
+                max-width: 95vw;
+                width: 100%;
+                padding: 1.2rem 0.5rem;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+                background: #fff;
+                margin: 0 auto;
+            }
+
+            .navbar-content {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+
+            .btn-primary {
+                color: #fff !important;
+            }
+
+            .navbar-auth-links {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                margin-top: 0.5rem;
+            }
+
+            .navbar-auth-links .btn {
+                width: 100%;
+                margin: 0 0 0.5rem 0 !important;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .auth-form {
+                padding: 0.5rem 0.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar bg-white">
+        <div class="container">
+            <div class="navbar-content" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="brand-and-toggler">
+                    <a href="index.html" class="navbar-brand">
+                        <img src="assets/images/curriculum-vitae.png" alt="" class="navbar-brand-icon">
+                        <span class="navbar-brand-text">AI-Powered <span>CV Maker</span></span>
+                    </a>
+                </div>
+                <div class="navbar-auth-links">
+                    <a href="log-in.html" class="btn btn-secondary" style="margin-right: 8px;">Log in</a>
+                    <a href="sign-up.html" class="btn btn-primary">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="auth-form-wrapper">
+        <form class="auth-form" id="login-form">
+            <h2>Log in</h2>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary"
+                style="width: 100%; margin-bottom: 1rem; font-size: 1.1rem;">Log in</button>
+            <div class="form-footer">
+                <span>Don't have an account? <a href="sign-up.html" class="btn btn-link btn-primary"
+                        style="padding: 0.2em 1em; font-size: 1em; color: #fff; margin-left: 0.5em;">Sign up</a></span>
+            </div>
+        </form>
+    </div>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/navbar-auth.js"></script>
+</body>
+
+</html>
