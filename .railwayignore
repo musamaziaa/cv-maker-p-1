@@ -1,0 +1,22 @@
+# Frontend files (not needed on backend)
+*.html
+assets/
+favicon.ico
+README.md
+AI_SETUP.md
+FAVICON_SETUP.md
+HOSTINGER_DEPLOYMENT.md
+DEPLOYMENT_CHECKLIST.md
+deploy-config.js
+
+# Development files
+.git/
+.gitignore
+node_modules/
+.env.local
+.env.development
+
+# Test files
+test-*.js
+*.test.js
+*.spec.js 
